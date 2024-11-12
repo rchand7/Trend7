@@ -37,14 +37,12 @@ app.use("/api/v1/application", applicationRoute);
 
 // Serve static files and index.html in production
 if (process.env.NODE_ENV === "production") {
-    const dirpath = path.resolve();
-
-    // Serve static files from the frontend build folder
-    app.use(express.static(path.join(dirpath, "frontend", "dist")));
+    // Path to 'frontend/dist' folder in the 'jobb' directory
+    app.use(express.static(path.join("C:", "Users", "chand", "OneDrive", "Desktop", "jobb", "frontend", "dist")));
 
     // Serve the frontend's index.html file for any unknown paths
     app.get("*", (req, res) => {
-        res.sendFile(path.resolve(dirpath, "frontend", "dist", "index.html"));
+        res.sendFile(path.join("C:", "Users", "chand", "OneDrive", "Desktop", "jobb", "frontend", "dist", "index.html"));
     });
 }
 
@@ -53,4 +51,8 @@ app.listen(PORT, () => {
     connectDB();  // Connect to MongoDB
     console.log(`Server running at port ${PORT}`);
 });
+
+
+
+
 
