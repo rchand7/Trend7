@@ -19,15 +19,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// CORS configuration
+// CORS configuration (no production URL)
 const corsOptions = {
-    origin: process.env.NODE_ENV === "production"
-        ? 'https://jobshijobss-2.onrender.com' // Your production frontend URL
-        : 'http://localhost:3000',  // Local development URL
+    origin: 'http://localhost:3000',  // Allow only the local development URL
     credentials: true
 };
 app.use(cors(corsOptions));
 
+// Define the PORT
 const PORT = process.env.PORT || 3000;
 
 // API routes
